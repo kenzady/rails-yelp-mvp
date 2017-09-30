@@ -2,4 +2,19 @@
 
 <p><%= @restaurant.address %></p>
 
-<p><%= link_to "Add a review", new_restaurant_review_path(@restaurant.id), class: "btn btn-danger" %></p>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+ <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :content %>
+  <%= f.label :rating %>
+  <%= f.select :rating, [0, 1, 2, 3, 4, 5] %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>
