@@ -9,7 +9,8 @@
     </div>
   <% end %>
   <%= f.input :content %>
-  <%= f.input :rating %>
+  <%= f.label :rating %>
+  <%= f.select :rating, [0, 1, 2, 3, 4, 5] %>
   <%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>
 
